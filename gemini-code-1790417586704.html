@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ใยแก้วนำแสง - งานเพิ่มคะแนนวิชาฟิสิกส์</title>
+    <style>
+        /* CSS Reset และการตั้งค่าพื้นฐาน */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Sarabun', 'Sarabun-Regular', sans-serif; /* ใช้ฟอนต์ไทยที่อ่านง่าย */
+            background-color: #f4f6f9; /* สีเทาอ่อน */
+            color: #333333;
+            line-height: 1.6;
+        }
+
+        /* โครงสร้างหน้ากระดาษแนว A4 responsive */
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            background-color: #ffffff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            padding: 50px 60px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                margin: 0;
+                padding: 30px 20px;
+                box-shadow: none;
+            }
+        }
+
+        /* Animation เบาๆ */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ส่วนหัวเว็บไซต์ (Header) */
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #1a365d; /* สีกรมท่า */
+            padding-bottom: 30px;
+            margin-bottom: 40px;
+        }
+        .header h3 {
+            color: #4a5568;
+            font-size: 1.2rem;
+            font-weight: normal;
+            margin-bottom: 10px;
+        }
+        .header h1 {
+            color: #1a365d; /* สีกรมท่า */
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        .header p.subtitle {
+            color: #2b6cb0; /* สีฟ้า */
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        .author-info {
+            font-size: 1.1rem;
+            color: #4a5568;
+            margin-bottom: 20px;
+        }
+        .header-image {
+            width: 100%;
+            height: auto;
+            max-height: 350px;
+            object-fit: cover;
+            border: 1px solid #e2e8f0;
+            margin-top: 20px;
+        }
+
+        /* หัวข้อและเนื้อหา */
+        h2 {
+            color: #1a365d;
+            font-size: 1.8rem;
+            border-left: 5px solid #2b6cb0; /* สีฟ้า */
+            padding-left: 15px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+        
+        /* กล่องข้อมูลรูปภาพ */
+        .figure-box {
+            text-align: center;
+            margin: 30px 0;
+            background-color: #f8fafc;
+            padding: 20px;
+            border: 1px solid #e2e8f0;
+        }
+        .figure-box img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #cbd5e1;
+        }
+        .figure-caption {
+            font-size: 0.95rem;
+            color: #64748b;
+            margin-top: 10px;
+        }
+
+        /* แผนภาพการส่งข้อมูล */
+        .flow-diagram {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            background-color: #ebf8ff; /* สีฟ้าอ่อนมาก */
+            padding: 20px;
+            border: 1px solid #bee3f8;
+            margin: 30px 0;
+            font-weight: bold;
+            color: #2a4365;
+        }
+        .flow-item {
+            text-align: center;
+        }
+        .flow-arrow {
+            color: #3182ce;
+        }
+
+        /* การประยุกต์ใช้งาน (Grid Layout) */
+        .applications-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        @media (max-width: 600px) {
+            .applications-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        .app-card {
+            border: 1px solid #e2e8f0;
+            padding: 15px;
+            background-color: #ffffff;
+        }
+        .app-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+        .app-card h4 {
+            color: #2b6cb0;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        .app-card p {
+            font-size: 1rem;
+            margin-bottom: 0;
+        }
+
+        /* รายการข้อดีและความเกี่ยวข้องกับฟิสิกส์ */
+        ul {
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+        ul li {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        .physics-list li strong {
+            color: #2b6cb0;
+        }
+
+        /* แหล่งข้อมูลและส่วนท้าย */
+        .references {
+            background-color: #f1f5f9;
+            padding: 20px;
+            border-left: 4px solid #94a3b8;
+            margin-top: 40px;
+        }
+        .references h4 {
+            color: #334155;
+            margin-bottom: 10px;
+        }
+        .references ul {
+            list-style-type: disc;
+            font-size: 0.95rem;
+            color: #475569;
+        }
+        
+        .footer {
+            margin-top: 60px;
+            text-align: center;
+            border-top: 1px solid #cbd5e1;
+            padding-top: 20px;
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- ส่วนที่ 1 : ส่วนหัวเว็บไซต์ -->
+    <div class="header">
+        <h3>งานเพิ่มคะแนนวิชาฟิสิกส์</h3>
+        <h1>ใยแก้วนำแสง</h1>
+        <p class="subtitle">การประยุกต์ใช้คลื่นแสงในการส่งข้อมูล</p>
+        <div class="author-info">
+            จัดทำโดย นายเศรษฐพงศ์ นิลดี<br>
+            ชั้น ม.5/1 เลขที่ 15
+        </div>
+        <img src="https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcTVlm1beWtorLPZecqvOs2caM4O1Z1UbbWeWWLZPJiO__79Rovvjwzkz2iC2ftnsCqJxVTun1OHcot9H6g" alt="สายใยแก้วนำแสง" class="header-image">
+    </div>
+
+    <!-- ส่วนที่ 2 : ใยแก้วนำแสงคืออะไร? -->
+    <h2>ใยแก้วนำแสงคืออะไร?</h2>
+    <p>ใยแก้วนำแสง (Optical Fiber) คือเส้นใยที่ทำจากแก้วหรือวัสดุโปร่งใสที่สามารถนำแสงให้เดินทางไปตามแนวเส้นใยได้ จึงถูกนำมาใช้ในการส่งข้อมูลในรูปของสัญญาณแสงจากตำแหน่งหนึ่งไปยังอีกตำแหน่งหนึ่ง</p>
+    
+    <!-- ส่วนที่ 3 : หลักการทำงาน -->
+    <h2>หลักการส่งแสงภายในใยแก้วนำแสง</h2>
+    <p>การที่แสงสามารถเดินทางผ่านใยแก้วนำแสงได้นั้น อาศัยหลักการทางฟิสิกส์ที่เรียกว่า <strong>การสะท้อนกลับหมด (Total Internal Reflection)</strong></p>
+    <p>โดยโครงสร้างแกนกลาง (Core) จะมีดัชนีหักเหสูงกว่าชั้นห่อหุ้ม (Cladding) เมื่อแสงตกกระทบรอยต่อระหว่าง Core และ Cladding ด้วยมุมที่โตกว่ามุมวิกฤต (Critical Angle) แสงจะไม่ทะลุออกไป แต่จะเกิดการสะท้อนกลับหมดอยู่ภายใน ทำให้แสงสามารถเดินทางไปตามความโค้งงอของเส้นใยแก้วได้อย่างต่อเนื่อง</p>
+    
+    <div class="figure-box">
+        <img src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcSTsmoikmPvjtELNyN5cEcnzv5UdjYMEK8T3LMidQzBUdMDRrQ2rAStxlI0Sv4ZuXxkK07q4lfLhT5tFDo" alt="แผนภาพการสะท้อนกลับหมดในใยแก้วนำแสง">
+        <div class="figure-caption">แผนภาพแสดงการสะท้อนกลับหมดของแสงภายในสายไฟเบอร์ออปติก<br>ที่มา: Getty Images (รูปภาพภาพประกอบแผนภาพหลักการทำงาน)</div>
+    </div>
+
+    <!-- ส่วนที่ 4 : โครงสร้างของใยแก้วนำแสง -->
+    <h2>โครงสร้างของใยแก้วนำแสง</h2>
+    <p>เส้นใยแก้วนำแสงมีโครงสร้างพื้นฐานที่สำคัญ 3 ส่วนหลัก ได้แก่:</p>
+    <ul>
+        <li><strong>Core (แกนกลาง):</strong> ส่วนที่แสงเดินทางผ่าน ทำจากแก้วหรือพลาสติกคุณภาพสูง มีดัชนีหักเหแสงมากที่สุด</li>
+        <li><strong>Cladding (ส่วนห่อหุ้มแกน):</strong> ชั้นที่อยู่ล้อมรอบ Core มีดัชนีหักเหน้อยกว่าส่วน Core ทำหน้าที่กักแสงให้อยู่ภายในแกนกลาง</li>
+        <li><strong>Coating / Buffer (ส่วนป้องกัน):</strong> ชั้นเคลือบภายนอกที่ช่วยป้องกันเส้นใยแก้วจากความชื้น และความเสียหายทางกายภาพต่างๆ</li>
+    </ul>
+
+    <div class="figure-box">
+        <img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcTcuBi_DVjozbDVJgz__JF1u8qNbnVqFH8fymVwBajYofSygKKFJm5qHPcik3Fon6lb8FOtnpSBNwpYFBA" alt="ภาพตัดขวางโครงสร้างสายใยแก้วนำแสง">
+        <div class="figure-caption">ภาพจำลองส่วนประกอบของสายใยแก้วนำแสง<br>ที่มา: Getty Images (รูปภาพโครงสร้าง Optical Fiber)</div>
+    </div>
+
+    <!-- ส่วนที่ 5 : การส่งข้อมูล -->
+    <h2>จากข้อมูลสู่สัญญาณแสง</h2>
+    <p>ข้อมูลอิเล็กทรอนิกส์ที่เราใช้งาน จะถูกแปลงเป็นสัญญาณที่ใช้แสงในการส่งผ่านใยแก้วนำแสง และเมื่อถึงปลายทางจะถูกตรวจจับและแปลงกลับเป็นข้อมูลที่ใช้งานได้ ดังแผนภาพด้านล่าง</p>
+    
+    <div class="flow-diagram">
+        <div class="flow-item">ข้อมูล</div>
+        <div class="flow-arrow">➔</div>
+        <div class="flow-item">อุปกรณ์ส่งสัญญาณ (Transmitter)</div>
+        <div class="flow-arrow">➔</div>
+        <div class="flow-item">สัญญาณแสง</div>
+        <div class="flow-arrow">➔</div>
+        <div class="flow-item">ใยแก้วนำแสง</div>
+        <div class="flow-arrow">➔</div>
+        <div class="flow-item">อุปกรณ์รับสัญญาณ (Receiver)</div>
+        <div class="flow-arrow">➔</div>
+        <div class="flow-item">ข้อมูล</div>
+    </div>
+
+    <!-- ส่วนที่ 6 : การประยุกต์ใช้งาน -->
+    <h2>การใช้งานใยแก้วนำแสง</h2>
+    <div class="applications-grid">
+        <div class="app-card">
+            <img src="https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcRmMHpfW-rksCfWums9CyVecjzC9q1Rz4fjCnOg4mMRpzqONkRVqPNyo4q2N0l4iBgCSYgRhruO6Y3oG5g" alt="การสื่อสารและอินเทอร์เน็ต">
+            <h4>การสื่อสารและอินเทอร์เน็ต</h4>
+            <p>ใช้ในการส่งข้อมูลผ่านเครือข่ายโทรคมนาคมและโครงข่ายอินเทอร์เน็ตความเร็วสูง</p>
+            <div class="figure-caption" style="font-size: 0.8rem; margin-top: 5px;">ที่มา: Getty Images</div>
+        </div>
+        <div class="app-card">
+            <img src="https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcQ4AyrEhs4nT6fRrw38NM4rNsAeCx7YhDze9EPHVZ3NDMPtHxoID-j6h6u4KTZYbX5Z0uR3MG0jqnIhIrc" alt="ศูนย์ข้อมูล">
+            <h4>ศูนย์ข้อมูล (Data Center)</h4>
+            <p>ใช้เชื่อมต่ออุปกรณ์และระบบเครือข่ายระดับองค์กรที่ต้องรับส่งข้อมูลจำนวนมหาศาล</p>
+            <div class="figure-caption" style="font-size: 0.8rem; margin-top: 5px;">ที่มา: Getty Images</div>
+        </div>
+        <div class="app-card">
+            <img src="https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcTmoiBLYLw2DkiLD-mLwo3-mnPDuDAc--9hT8veBcMmY-k6wdm0Dunhnu9Tmshwa7-GBxve2_Tqbl-Hi7U" alt="การแพทย์">
+            <h4>การแพทย์</h4>
+            <p>ใช้ในอุปกรณ์ทางการแพทย์ เช่น ระบบส่องกล้องตรวจภายในร่างกาย (Endoscope)</p>
+            <div class="figure-caption" style="font-size: 0.8rem; margin-top: 5px;">ที่มา: Getty Images</div>
+        </div>
+        <div class="app-card">
+            <!-- ใช้ภาพ Placeholder ในกรณีไม่มีรูปเพิ่มเติมที่เจาะจงเฉพาะสำหรับหัวข้อนี้ -->
+            <img src="https://encrypted-tbn1.gstatic.com/licensed-image?q=tbn:ANd9GcTVlm1beWtorLPZecqvOs2caM4O1Z1UbbWeWWLZPJiO__79Rovvjwzkz2iC2ftnsCqJxVTun1OHcot9H6g" alt="ระบบโทรคมนาคม">
+            <h4>ระบบโทรคมนาคม</h4>
+            <p>ใช้ส่งข้อมูลระหว่างพื้นที่หรือระหว่างประเทศผ่านโครงข่ายสายเคเบิลใยแก้วนำแสงใต้น้ำ</p>
+            <div class="figure-caption" style="font-size: 0.8rem; margin-top: 5px;">ที่มา: Getty Images</div>
+        </div>
+    </div>
+
+    <!-- ส่วนที่ 7 : ข้อดีของใยแก้วนำแสง -->
+    <h2>ข้อดีของใยแก้วนำแสง</h2>
+    <ul>
+        <li>สามารถส่งข้อมูลด้วยความเร็วสูง</li>
+        <li>รองรับการส่งข้อมูลในปริมาณมาก (High Bandwidth)</li>
+        <li>มีการสูญเสียสัญญาณต่ำเมื่อเทียบกับระยะทางที่เหมาะสม</li>
+        <li>ไม่ได้รับผลกระทบจากสัญญาณรบกวนหรือสนามแม่เหล็กไฟฟ้าในลักษณะเดียวกับสายตัวนำโลหะ</li>
+        <li>มีขนาดเล็กและน้ำหนักเบาเมื่อเทียบกับความสามารถในการรับส่งข้อมูล</li>
+    </ul>
+
+    <!-- ส่วนที่ 8 : ความเกี่ยวข้องกับฟิสิกส์ -->
+    <h2>ใยแก้วนำแสงกับฟิสิกส์</h2>
+    <ul class="physics-list">
+        <li><strong>การหักเหของแสง:</strong> เกี่ยวข้องกับการเปลี่ยนทิศทางของแสงเมื่อเดินทางผ่านตัวกลางต่างชนิดกันที่มีความหนาแน่นเชิงแสงต่างกัน</li>
+        <li><strong>ดัชนีหักเห:</strong> เป็นสมบัติของตัวกลางที่เกี่ยวข้องกับอัตราเร็วของแสงในตัวกลางนั้น</li>
+        <li><strong>การสะท้อนกลับหมด:</strong> เป็นปรากฏการณ์และหลักการสำคัญทางฟิสิกส์ที่ทำให้แสงสามารถถูกนำทางให้อยู่ภายใน Core ของใยแก้วนำแสงได้โดยไม่ทะลุออกไปด้านนอก</li>
+    </ul>
+
+    <!-- ส่วนที่ 9 : สรุป -->
+    <h2>สรุป</h2>
+    <p>ใยแก้วนำแสงเป็นเทคโนโลยีที่นำหลักการทางฟิสิกส์ของแสง โดยเฉพาะ "การสะท้อนกลับหมด" มาประยุกต์ใช้ในการนำสัญญาณแสงผ่านเส้นใยขนาดเล็ก เพื่อส่งข้อมูลไปยังตำแหน่งต่าง ๆ จึงทำให้เทคโนโลยีนี้มีบทบาทสำคัญอย่างยิ่งในระบบสื่อสาร อินเทอร์เน็ต โทรคมนาคม ศูนย์ข้อมูล และงานทางการแพทย์บางประเภทในปัจจุบัน</p>
+
+    <!-- ส่วนที่ 10 : แหล่งข้อมูลและเครดิตภาพ -->
+    <div class="references">
+        <h4>แหล่งข้อมูลและเครดิตภาพ</h4>
+        <ul>
+            <li>ข้อมูลฟิสิกส์พื้นฐานเรื่องแสง: หนังสือเรียนรายวิชาเพิ่มเติมวิทยาศาสตร์และเทคโนโลยี ฟิสิกส์ ม.5 เล่ม 3 (สสวท.)</li>
+            <li>แหล่งที่มาภาพประกอบทั้งหมด: คลังภาพลิขสิทธิ์จาก <a>Getty Images</a> (สืบค้นผ่านฐานข้อมูลภาพวิชาการและอุตสาหกรรม)</li>
+        </ul>
+    </div>
+
+    <!-- ส่วนท้ายเว็บไซต์ -->
+    <div class="footer">
+        งานเพิ่มคะแนนวิชาฟิสิกส์<br>
+        เรื่อง ใยแก้วนำแสง<br>
+        จัดทำโดย นายเศรษฐพงศ์ นิลดี ม.5/1 เลขที่ 15<br>
+        <br>
+        <em>ออกแบบโดยเน้นข้อมูลและความถูกต้องทางวิทยาศาสตร์เป็นหลัก</em>
+    </div>
+</div>
+
+</body>
+</html>
